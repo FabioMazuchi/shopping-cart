@@ -1,7 +1,6 @@
 require("../mocks/fetchSimulator");
 const { fetchProducts } = require("../helpers/fetchProducts");
 const computadorSearch = require("../mocks/search");
-
 const url = 'https://api.mercadolibre.com/sites/MLB/search?q=computador';
 
 describe("1 - Teste a função fecthProducts", () => {

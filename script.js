@@ -15,13 +15,13 @@ function createCustomElement(element, className, innerText) {
 function createProductItemElement({ id: sku, title: name, thumbnail: image }) {
   const section = document.createElement('section');
   section.className = 'item';
+  const items = document.querySelector('.items');
 
   section.appendChild(createCustomElement('span', 'item__sku', sku));
   section.appendChild(createCustomElement('span', 'item__title', name));
   section.appendChild(createProductImageElement(image));
   section.appendChild(createCustomElement('button', 'item__add', 'Adicionar ao carrinho!'));
-
-  return section;
+  items.appendChild(section);
 }
 
 function getSkuFromProductItem(item) {
@@ -40,11 +40,13 @@ function createCartItemElement({ sku, name, salePrice }) {
   return li;
 }
 
-window.onload = async () => {
-  const res = await fetchProducts();
-  const section = document.querySelector('.items');
-  console.log(section);
-  res.results.forEach((element) => {
-    section.appendChild(createProductItemElement(element));
-  });
+const buscarDados = async () => {
+  const data = await fetchProducts();
+  // const section = document.querySelector('.items');
+  console.log(data);
+  data.results.forEach(createProductItemElement);
+};
+  
+window.onload = () => {
+  buscarDados();
 };
