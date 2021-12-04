@@ -23,8 +23,4 @@ describe('2 - Teste a função fecthItem', () => {
     const atual = await fetchItem('MLB1615760527')
     expect(atual).toEqual(item);
   });
-  // it('ao chamar a função fetchItem sem argumento, retorna um erro com a mensagem: You must provide an url.', async () => {
-  //   const atual = await fetchItem('MLB1615760527');
-  //   expect(atual).toThrow(Error('You must provide an url.'));
-  // });
 });
