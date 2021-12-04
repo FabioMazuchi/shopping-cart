@@ -17,8 +17,18 @@ function createCustomElement(element, className, innerText) {
 }
 
 function cartItemClickListener(event) {
-  // coloque seu código aqui
+  const ol = document.querySelector('.cart__items').children;
+  const select = event.target;
+  select.classList.add('clicou');
+
+  for (let i = 0; i < ol.length; i += 1) {
+    if (ol[i].classList[1] === 'clicou') {
+      ol[i].remove();
+    }  
+  }
 }
+
+// cartItemClickListener();
 
 function createCartItemElement({ id: sku, title: name, price: salePrice }) {
   const li = document.createElement('li');
@@ -36,7 +46,6 @@ const buscarDadosProduto = async (id) => {
   const ol = document.querySelector('.cart__items');
   const data = await fetchItem(id);
   const li = createCartItemElement(data);
-  console.log(ol);
   ol.appendChild(li);
 };
 
