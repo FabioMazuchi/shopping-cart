@@ -1,3 +1,30 @@
+const ol = document.querySelector('.cart__items');
+const somaSpan = document.querySelector('.total-price');
+const esvaziarBtn = document.querySelector('.empty-cart');
+
+const somar = () => {
+  const array = ol.children;
+  let soma = 0;
+  for (let i = 0; i < array.length; i += 1) {
+    const pos = array[i].innerText.indexOf('$');
+    const res = Number(array[i].innerText.substring(pos + 1));
+    soma += res;
+  }
+  somaSpan.innerText = soma;
+};
+
+const esvaziarCarrinho = () => {
+  const array = ol.children;
+
+  for (let i = 0; i < array.length; i += i) {
+    array[i].remove();  
+    console.log(array.length);
+  }
+  somar();
+};
+
+esvaziarBtn.addEventListener('click', esvaziarCarrinho);
+
 function createProductImageElement(imageSource) {
   const img = document.createElement('img');
   img.className = 'item__image';
@@ -5,9 +32,9 @@ function createProductImageElement(imageSource) {
   return img;
 }
 
-const getPriceNameId = (item) => {
-  console.log(item.querySelector(('span.item__sku').innerText));
-};
+// const getPriceNameId = (item) => {
+//   item.querySelector(('span.item__sku').innerText);
+// };
 
 function createCustomElement(element, className, innerText) {
   const e = document.createElement(element);
@@ -17,18 +44,17 @@ function createCustomElement(element, className, innerText) {
 }
 
 function cartItemClickListener(event) {
-  const ol = document.querySelector('.cart__items').children;
+  const array = ol.children;
   const select = event.target;
   select.classList.add('clicou');
 
-  for (let i = 0; i < ol.length; i += 1) {
-    if (ol[i].classList[1] === 'clicou') {
-      ol[i].remove();
+  for (let i = 0; i < array.length; i += 1) {
+    if (array[i].classList[1] === 'clicou') {
+      array[i].remove();
     }  
   }
+  somar();
 }
-
-// cartItemClickListener();
 
 function createCartItemElement({ id: sku, title: name, price: salePrice }) {
   const li = document.createElement('li');
@@ -43,10 +69,11 @@ function getSkuFromProductItem(item) {
 }
 
 const buscarDadosProduto = async (id) => {
-  const ol = document.querySelector('.cart__items');
+  // const ol = document.querySelector('.cart__items');
   const data = await fetchItem(id);
   const li = createCartItemElement(data);
   ol.appendChild(li);
+  somar();
 };
 
 const addListennerOnButtons = () => {

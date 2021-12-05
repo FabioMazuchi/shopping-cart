@@ -26,7 +26,6 @@ const countCart = (amount) => {
 }
 
 const checkPrice = (results, indexes) => {
-  console.log(results)
   cy.wait(1000);
   let total = 0;
   indexes.forEach(index => total += results[index].price);
@@ -57,7 +56,6 @@ describe('Shopping Cart Project', () => {
       cy.wait(1000);
       addToCart(36);
       countCart(1);
-      console.log(results[36].id, results[36].title)
       cy.get(CART_ITEMS)
         .children()
         .first()

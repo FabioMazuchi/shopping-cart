@@ -7,7 +7,6 @@ const url = 'https://api.mercadolibre.com/items/MLB1615760527';
 describe('2 - Teste a função fecthItem', () => {
   it('a função fetchItem é uma função', () => {
     const atual = typeof fetchItem;
-    console.log(atual);
     const esperado = 'function';
     expect(atual).toBe(esperado);
   });
