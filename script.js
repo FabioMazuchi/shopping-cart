@@ -69,10 +69,10 @@ function getSkuFromProductItem(item) {
 }
 
 const buscarDadosProduto = async (id) => {
-  // const ol = document.querySelector('.cart__items');
   const data = await fetchItem(id);
   const li = createCartItemElement(data);
   ol.appendChild(li);
+  saveCartItems(ol.innerHTML);
   somar();
 };
 
@@ -114,9 +114,20 @@ const clearLoading = () => {
   div.remove();
 };
 
+const getLocalStorage = () => {
+  const data = getSavedCartItems();
+  ol.innerHTML = data;
+  for (let i = 0; i < ol.children.length; i += 1) {
+    ol.children[i].addEventListener('click', cartItemClickListener);
+  }
+  somar();
+};
+
 window.onload = async () => {
   addloading();
   await buscarDados();
   addListennerOnButtons();
   clearLoading();
+  somar();
+  getLocalStorage();
 };
