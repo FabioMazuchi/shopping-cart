@@ -6,11 +6,11 @@
 }
 
 body {
-  background-color: #1f4135;
+  background-color: black;
 }
 
 header {
-  background-color: #226B52;
+  background-color: #226b52;
   padding: 12px 0;
   margin-bottom: 15px;
 }
@@ -72,7 +72,7 @@ h1 {
   display: flex;
   flex-basis: 30%;
   flex-flow: column wrap;
-  background-color: #226B52;
+  background-color: #38745f;
   padding: 10px;
   margin-right: 20px;
   border-radius: 8px;
@@ -85,15 +85,17 @@ ol {
 
 .cart__item {
   margin-bottom: 16px;
-  background-color: #308b6b;
+  background-color: #ffffff;
   padding: 8px;
   border-radius: 4px;
   cursor: pointer;
+  color: #226b52;
+  font-weight: 600;
 }
 
 .cart .cart__title {
   flex-basis: 1;
-  font-size: 16pt;
+  font-size: 22pt;
   text-align: center;
   font-weight: 600;
   margin-bottom: 10px;
@@ -105,7 +107,7 @@ ol {
   padding: 4px 0;
   font-size: 17px;
   font-weight: 600;
-  color: #226B52;
+  color: #226b52;
 }
 
 .loading {
