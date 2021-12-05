@@ -102,8 +102,21 @@ const buscarDados = async () => {
   const data = await fetchProducts();
   data.results.forEach(createProductItemElement);
 };
-  
+
+const addloading = () => {
+  const section = document.querySelector('.container');
+  const div = createCustomElement('div', 'loading', 'carregando...');
+  section.appendChild(div);
+};
+
+const clearLoading = () => {
+  const div = document.querySelector('.loading');
+  div.remove();
+};
+
 window.onload = async () => {
+  addloading();
   await buscarDados();
   addListennerOnButtons();
+  clearLoading();
 };
